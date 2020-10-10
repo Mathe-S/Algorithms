@@ -70,16 +70,9 @@ def task2(N):
 
 
 
-
-
-
-
-
-
-
 alfa = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
         'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '.', ',', ':', ';']
-N = 1000000
+N = 10000
 
 """ 2 ქულა = 20%
     3. მოცემული alfa სიმრავლისგან შექმენით N სიმბოლოიანი სტრიქონი, რომელშიც სტრიქონის ფორმირების პროცესში 
@@ -97,6 +90,70 @@ N = 1000000
        სიტყვებიდან ამოღებული იქნება ციფრითი მნიშვნელობები მიმდევრობების შეუცვლელად. გამოთვალეთ და 
        დაბეჭდეთ ლექსიკონის ორ ელემენტიანი გასაღებიდან იმ გასაღების მნიშვნელობა, რომელშიც ყველაზე მეტი 
        ელემენტია განთავსებული.      """
+
+
+
+def task3():
+    change_to_har = ['.', ',', ';', ':']
+    myStr = ''
+    myDict = {'other': []}
+    
+    # შევქმნათ N სიმბოლოიანი სტრიქონი და სასვენი სიმბოლოები შევცვალოთ ჰარით:
+    for i in range(N):
+        x = random.choice(alfa)
+        if x in change_to_har:
+            x = ' '
+        myStr += x
+        
+    # დავყოთ სტრიქონი ცალკეულ სიტყვებად და შევავსოთ ლექსიკონი
+    for i in myStr.split(" "):
+        # გავფილტროთ ცარიელი ელემენტები
+        if not i:
+            continue
+        
+        # შევავსოთ
+        if i[0].isdigit() or i[-1].isdigit():
+            if i in myDict:
+                myDict[i].append(i)
+            else:
+                myDict[i] = [i]
+        else:
+            myDict['other'].append(i)
+            
+    # print(myDict) 
+            
+    # ამოცანის მეორე ნაწილი:
+    # ლექსიკონის მნიშვნელობების გაფილტვრა არა რიცხვითი მნიშვნელობისგან:
+    for i  in myDict:
+        temp_arr = []
+        for j in myDict[i]:
+            temp_str = ''
+            for k in list(j):
+                if k.isdigit():
+                    temp_str += k
+            temp_arr.append(temp_str)
+        myDict[i] = temp_arr
+    # print(myDict)
+    
+    # ყველაზე მეტ ელემენტიანი სიმრავლის არჩევა 
+    my_key = ''
+    my_length = 0
+    
+    
+    for i in myDict:
+        if i == 'other':
+            continue
+        if len(myDict[i]) > my_length:
+            my_length = len(myDict[i])
+            my_key = i
+    
+    print(my_key)
+    
+    
+# task3()
+
+
+
 
 
 ''' 1 ქულა = 10%
