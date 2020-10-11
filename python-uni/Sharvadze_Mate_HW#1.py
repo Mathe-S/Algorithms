@@ -147,8 +147,9 @@ def task3():
             my_length = len(myDict[i])
             my_key = i
     
-    print(my_key)
+    print("ყველაზე მეტ ელემენტიანი გასაღებია: ", my_key)
     
+    return myDict['other']
     
 # task3()
 
@@ -166,6 +167,43 @@ def task3():
         
        იპოვეთ და დაბეჭდეთ თუ რომელ სიმრავლეზე (s1-s2, s2-s1 თუ მათ თანაკვეთაზე) მიიღწევა საშუალო 
        არითმეტიკულის უდიდესი მნიშვნელობა.    '''
+
+
+def task4():
+    # წინა დავალებიდან წამოვიღოთ other გასარებზე არსებული მნიშვნელობები და გავფილტროთ ცარიელი მნიშვნელობებისგან
+    other = []
+    for i in task3():
+        if not i:
+            continue
+        other.append(i)
+    
+    # შევქმნათ s1 და s2 სიმრავლეები
+    n = len(other) // 2
+    s1, s2 = set(), set()
+
+    for i in range(n):
+        s1.add(random.choice(other))
+        s2.add(random.choice(other))
+    
+    s3 = s1.difference(s2)
+    s4 = s2.difference(s1)
+    s5 = s1.intersection(s2)
+    
+    sum3 = sum(int(x) for x in s3)
+    sum4 = sum(int(x) for x in s4)
+    sum5 = sum(int(x) for x in s5)
+
+    if sum3/len(s3) >= sum4/len(s4) and sum3/len(s3) >= sum5/len(s5):
+        print("s1-s2 სიმრავლეზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
+    elif sum4/len(s4) >= sum3/len(s3) and sum4/len(s4) >= sum5/len(s5):
+        print("s2-s1 სიმრავლეზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
+    elif sum5/len(s5) >= sum3/len(s3) and sum5/len(s5) >= sum4/len(s4):
+        print("s1 ის და s2 ის სიმრავლეთა თანაკვეთაზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
+
+task4()
+
+
+
 
 
 """ 1.5 ქულა = 15% 
