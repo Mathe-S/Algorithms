@@ -30,9 +30,9 @@ def task1(a, b, N):
         x = random.randint(a, b)
         if ( (x%100)//10 + x//100 ) == x%10 or ( ((x%100)//10 + x//100) %10 == x%10 ):
             myList.append(x)
-    print(len(myList), myList[:20])
+    print("დავალება 1: \n სიმრავლეში ელემენტების რაოდენობაა: {x} \n სიმრავლის პირველი 20 ელმენტია: {y}".format( x = len(myList), y = myList[:20]))
     
-# task1(100, 999, 5000)
+task1(100, 999, 5000)
 
 
 
@@ -58,7 +58,7 @@ def task2(N):
                sub_int_str += str(x) 
         if len(sub_int_str) == 15:
             myList.append( int(sub_int_str) )
-    print(myList)  # 2000 ძალიან პატარაა რომ შედეგი მოგვცეს, 100000 იც იშვიათად იძლევა შედეგს.
+    print("\nდავალება 2: \n15 სიმბოლოიანი მნიშვნელობები რომელბიც პირობას აკმაყოფილებენ: ", myList)  # 2000 ძალიან პატარაა რომ შედეგი მოგვცეს, 100000 იც იშვიათად იძლევა შედეგს.
     for i in myList:
         subList = list( str(i) )
         if subList == sorted(subList):
@@ -66,13 +66,13 @@ def task2(N):
     print("ზრდადობით დალაგებული ელემენტების რაოდენობაა: ", count_sorted_elements) if count_sorted_elements > 0 else print("ზრდადობით დალაგებული ელემენტები არ მოიძებნა")
 
 
-# task2(100000)
+task2(100000)
 
 
 
 alfa = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
         'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '.', ',', ':', ';']
-N = 1000
+N = 10000
 
 """ 2 ქულა = 20%
     3. მოცემული alfa სიმრავლისგან შექმენით N სიმბოლოიანი სტრიქონი, რომელშიც სტრიქონის ფორმირების პროცესში 
@@ -93,7 +93,7 @@ N = 1000
 
 
 
-def task3():
+def task3(main = False):
     change_to_har = ['.', ',', ';', ':']
     myStr = ''
     myDict = {'other': []}
@@ -150,12 +150,13 @@ def task3():
             my_length = len(myDict[i])
             my_key = i
     
-    print("ყველაზე მეტ ელემენტიანი გასაღებია: ", my_key)
+    if main:
+      print("\nდავალება 3: \n ყველაზე მეტ ელემენტიანი გასაღებია: ", my_key, "\n")
     
     # მეოთხე და მეხუთე დავალებისვის დავაბრუნოთ საჭირო დათა:
     return [ myDict['other'], fortask5]
     
-# task3()
+task3(main = True)
 
 
 
@@ -198,13 +199,13 @@ def task4():
     sum5 = sum(int(x) for x in s5)
 
     if sum3/len(s3) >= sum4/len(s4) and sum3/len(s3) >= sum5/len(s5):
-        print("s1-s2 სიმრავლეზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
+        print("დავალება 4: \n s1-s2 სიმრავლეზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
     elif sum4/len(s4) >= sum3/len(s3) and sum4/len(s4) >= sum5/len(s5):
-        print("s2-s1 სიმრავლეზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
+        print("დავალება 4: \n s2-s1 სიმრავლეზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
     elif sum5/len(s5) >= sum3/len(s3) and sum5/len(s5) >= sum4/len(s4):
-        print("s1 ის და s2 ის სიმრავლეთა თანაკვეთაზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
+        print("დავალება 4: \n s1 ის და s2 ის სიმრავლეთა თანაკვეთაზე მიიღწევა საშუალო არითმეტიკულის უდიდესი მნიშვნელობა")
 
-# task4()
+task4()
 
 
 
@@ -228,7 +229,7 @@ def task4():
 
 
 def task5():
-    myStr = task3()[1]; # წამოვიღოთ N სიმბოლოიანი სტრიქონი
+    myStr = task3()[1]; # წამოვიღოთ N სიმბოლოიანი სტრიქონი, რომელსაც მესამე დავალებიდან მასივის მეორე ელემენტის სახით ვაბრუნებ 
     myDict = {'other': []}
     
     # დავყოთ სტრიქონი ცალკეულ სიტყვებად და შევავსოთ ლექსიკონი
@@ -246,7 +247,23 @@ def task5():
         else:
             myDict['other'].append(i)
                 
-    # შეცვლა
+
+    #ლექსიკონშ გვაქვს  გვაქვს ასეთი სტუქტურა: გასაღები: [ 'other': [], { გასაღები1: [ მნიშვნელობა1, მნიშვნელობა2 ... ] }, { გასაღები2: [ მნიშვნელობა1, მნიშვნელობა2 ... ] } ]
+    
+    # შევცვალოთ 'other' გასაღებში არსებული მნიშვნელობები მხოლოდ შესაბამისი რიცხვითი მნიშვნელობებით
+    temp_arr = []
+    for i in myDict['other']:
+        temp_str = ''
+        for j in list(i):
+            if j.isdigit():
+                temp_str += j
+        if not temp_str:
+            continue
+        temp_arr.append(temp_str)
+    myDict['other'] = temp_arr
+    
+    
+    # ქვემოთ მოცემული for ციკლები ჩავლენ ყველაზე დაბალ საფეხურზე და შეცვლიან ელემენტს ისე რომ მხოლოდ რიცხვი დარჩეს
     for i in myDict:
         if i == 'other':
             continue
@@ -260,23 +277,13 @@ def task5():
                            temp_str += kkk
                     temp_arr.append(temp_str)
                 j[k] = temp_arr
-            
-    temp_arr = []
-    for i in myDict['other']:
-        temp_str = ''
-        for j in list(i):
-            if j.isdigit():
-                temp_str += j
-        if not temp_str:
-            continue
-        temp_arr.append(temp_str)
-    myDict['other'] = temp_arr
     
+    # print(myDict) 
     
     
     # ელემენტის მაქსიმალური მნიშვნელობის ძებნა
     
-    # ჯერ მოვძებნოთ 'other' გასაღებშ მაქსიმალური
+    # ჯერ მოვძებნოთ 'other' გასაღებშi მაქსიმალური
     max_key = 'other'
     max_val = 0
     
@@ -284,6 +291,7 @@ def task5():
         if int(i) > max_val :
             max_val = int(i)
     
+    # ახლა დანარჩენ გასაღებებში
     for i in myDict:
         if i == 'other':
             continue
@@ -292,14 +300,17 @@ def task5():
                 if int(k[0]) > max_val :
                     max_val = int(k[0])
                     max_key = i
-                    print(k[0])
             
             
-    print("მაქსიმუმი მნიშვნელობა არის გასაღებ: ", max_key, "-ში და არის: ",  max_val, )
+    print("\nდავალება 5: \n მაქსიმუმი მნიშვნელობა არის გასაღებ: ", max_key, "-ში და არის: ",  max_val, )
     # print(myDict)
 
 
-# task5()
+
+    # ლექსიკონის დაბრუნდება მე-6 დავალებისთვის
+    return myDict
+
+task5()
 
 
 
@@ -337,6 +348,77 @@ def task5():
                dct = {}
                print(dct.__class__.__name__)    # --> დაიბეჭდება dict
 """
+
+ans_key = ''
+min_value = 9999999
+
+def task6function(dct, key, in_key = 0, func = None):
+    
+    # ის შემთხვევა როცა გასაღები ლექსიკონი არ არის
+    if not type(dct[key][0]) is dict:
+        # დააბრუნებს გასაღების არსებული სიმრავლის რიცხვთა ჯამის საშუალო არითმეტიკულს გადაცემული ფუნქციის გათალისწინებით
+        return sum( int(x) for x in dct[key] if func(x)) / len(dct[key])
+    else:
+        # შემთხვევა როცაგასაღები ლექსიკონია
+        # ჩავა ლექსიკონ-გასაღების ქვედა სიმრავლეებშ და დათვლის საშუალო არითმეტიკულს
+        for i in dct[key]:
+                return sum ( int(x) for x in i[in_key] if func(x) ) / len (i[in_key])
+
+# ფუნქცია იმის დასადგენად არის თუ არა ლუწ ადგილზე მდგომი ელემენტი ლუწი
+def conditionfunc(x):
+    for i in list(x)[::2]:
+        if int(i) % 2 != 0:
+            return False
+    return True
+
+
+# მეექვსე დავალების მტავარი ფუნქცია !!! 
+def task6():
+    
+    # წამოვიღოღ მეხუთე დავალებიდან მიღებული ლექსიკონი
+    myDict = task5()
+    # გამოვიყენოთ გლობალური ცვლადები მინიმაულირი მნიშვნელობის დასადგენად და მინიმალური მნიშვნელობის გასაღების დასამახსოვრებლად
+    global min_value
+    global ans_key
+    
+    for key in myDict:
+        
+        # ის შემთხვევა როცა გასაღები არ არის ლექსიკონი
+        if not type(myDict[key][0]) is dict:
+            # task6function ფუნცია myVal  ში დააბრუნებს საშუალო არითმეტიკულის მნიშვნელობას
+            myVal = task6function(myDict, key, func = conditionfunc )
+            
+            # თუ myVal ტოლია 0 ის, ეს ნიშნავს რომ ლუწ ადგილებზე მდგომი ციფრები ლუწი არ არის, ამიტომ გამოვტოვოთ
+            if min_value > myVal > 0 :
+               min_value = myVal
+               ans_key = key
+           
+        # ის შემთხვევა როცა გასაღები ლექსიკონია
+        else:
+            # ამ შემთხვევაში გვექნება ასეთი სტრუქტურა: გასაღები: [ { გასაღები: მნიშვნელობა } ]
+            # რომ მივწვდეთ შიდა გასარებს გვჭირდება 2 იტერაცია, ქვედა 2 for  ციკლი სწორედ ამას აკეთებს
+            for in_key in myDict[key]:
+                for in_key_key in in_key:
+                   # task6function ფუნცია myVal  ში დააბრუნებს საშუალო არითმეტიკულის მნიშვნელობას
+                   myVal = task6function(myDict, key, in_key_key, func = conditionfunc) 
+                   # თუ myVal ტოლია 0 ის, ეს ნიშნავს რომ ლუწ ადგილებზე მდგომი ციფრები ლუწი არ არის, ამიტომ გამოვტოვოთ
+                   if min_value > myVal > 0 :
+                       min_value = myVal
+                       ans_key = key
+
+    print("\nდავალება 6: \n მინიმალური საშუალო არითმეტიკულის მნიშვნელობაა {x}  და ის მდებარეობს გასაღებ {y} ში".format(x = min_value, y = ans_key))
+
+
+task6()
+
+
+
+
+
+
+
+
+
 
 
 """ 1 ქულა = 10% 
